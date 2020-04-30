@@ -140,10 +140,11 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.commit();
     }
     public void create_user(View v) {
+        if (User.getCurrentUser().isAdmin()){
         add_users add_users = new add_users();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, add_users);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();}
     }
 
     public void to_menu(View v) {
