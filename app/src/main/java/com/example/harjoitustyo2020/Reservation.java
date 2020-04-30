@@ -1,6 +1,5 @@
 package com.example.harjoitustyo2020;
 
-//TODO Varaus-luokka, joka pitää sisällään varauksen tiedot
 
 import android.util.Log;
 
@@ -24,13 +23,9 @@ public class Reservation {
 
         attenderList = new ArrayList<>();
 
-        //TODO: Pitäisikö reservation ownerin olla samalla varauksensa attender??
-    } // int uniqueID, User owner, Sporthall hall, String newTitle, Calendar reservStartDate, Calendar reservEndDate
+    }
 
-
-    // ======= PUBLIC GETTERS =======
     int getUUID() {return UUID;}
-    //String getTitle() {return title;}
     String getSport() {return sport;}
     User getOwner() {return owner;}
     int getMaxParticipants() {return maxParticipants;}
@@ -62,13 +57,10 @@ public class Reservation {
     }
 
 
-    // ======= PUBLIC SETTERS =======
-
     void setUUID(int newID) {UUID = newID;}
     void setParent(Sporthall parent) {
         sporthall = parent;
     }
-    //void setTitle(String text) {title = text;}
     void setSport(String text) {sport = text;}
     void setOwner(int ownerID) {
 
@@ -84,8 +76,6 @@ public class Reservation {
     void setStartCalendar(Calendar calend) {startCalendar = calend;}
 
 
-    // ======= PUBLIC OTHER METHODS =======
-
     public void setEndFromStartDur(Calendar startDate, int duration) {
         Calendar endDate = (Calendar) startDate.clone();
         endDate.add(Calendar.HOUR_OF_DAY, duration);
@@ -100,22 +90,9 @@ public class Reservation {
 
     // USED ONLY FOR DEBUGGIN PURPOSES
     public String toString() {
-        //TODO owner.getUserName() pitää lisätä kun toimii
         return (UUID + " " + sport + " " + getAttenderAmount());
     }
 
-
-    // ======= PRIVATE METHODS =======
-
-    // TODO: Turha jos kutsutaan vain addAsAttenderista
-    private void addUserTo(User user) {
-        attenderList.add(user);
-    }
-
-    // TODO: Turha jos kutsutaan vain removeAttenderista
-    private void removeUserFrom(User user) {
-        attenderList.remove(user);
-    }
 
 
     private boolean setStartDate(Calendar newStartDate) {
