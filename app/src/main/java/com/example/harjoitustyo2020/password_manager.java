@@ -11,9 +11,7 @@ import java.util.Random;
 
 public class password_manager {
 
-    password_manager() {
-        //ASD
-    }
+    password_manager() {}
 
 
     public static String get_hashed_password(String password, String userName) {
@@ -44,7 +42,7 @@ public class password_manager {
         return false;
     }
 
-
+    // password meet requirements
     public static boolean passwordIsCompliant(String str) {
         char ch;
         boolean capitalFlag = false;
@@ -72,7 +70,7 @@ public class password_manager {
         return false;
     }
 
-
+    //hash password with SHA-512
     private static String get_SHA_512_SecurePassword(String passwordToHash, String salt){
         String generated_password = null;
         try {
