@@ -43,6 +43,7 @@ public class add_users extends Fragment {
         });
         
     }
+    //method to create new user and saving it database
     public void create_new_user(){
         String username = username_field.getText().toString();
         String password = password_field.getText().toString();
@@ -81,6 +82,7 @@ public class add_users extends Fragment {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     }
+    // clear fields for easy re-entry of data
     public void clear_fields(){
         username_field.setText("");
         firstname_field.setText("");
