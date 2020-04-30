@@ -16,24 +16,16 @@ public class Enroll {
         enrollsList = new ArrayList<>();
     }
 
-
-    // ======= PUBLIC GETTERS =======
-
+    // These are used to get enroll info to other classes
     public int getEnrollID() {return EnrollID;}
     public int getReserveID() {return ReserveID;}
     public int getUserUUID() {return UserUUID;}
-
-
-    // ======= PUBLIC SETTERS =======
 
     public void setEnrollID(int newEnrollID) {EnrollID = newEnrollID;}
     public void setReserveID(int newReserveID) {ReserveID = newReserveID;}
     public void setUserUUID(int newUserID) {UserUUID = newUserID;}
 
     public void setEnrollsList(ArrayList<Enroll> enrolls) {enrollsList = enrolls;}
-
-
-    // ======= PUBLIC OTHER METHODS =======
 
     public boolean addEnroll(Enroll enroll) {
         if (enroll != null) {
@@ -44,22 +36,5 @@ public class Enroll {
     }
 
 
-    public void logAllEnrolls(String TAG) {
-        for (Enroll enroll : enrollsList) {
-            Log.d(TAG, enroll.toString());
-        }
-    }
-
-
-    // ======= PRIVATE METHODS =======
-
-    private boolean doesEnrollExist(Enroll enroll) {
-        for (Enroll enrl : enrollsList) {
-            if (enrl.equals(enroll)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
 }
