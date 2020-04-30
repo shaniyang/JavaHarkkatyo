@@ -39,7 +39,8 @@ public class add_users extends Fragment {
         create_new_user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                create_new_user();
+                if (User.getCurrentUser().isAdmin()){
+                create_new_user();}
             }
         });
         

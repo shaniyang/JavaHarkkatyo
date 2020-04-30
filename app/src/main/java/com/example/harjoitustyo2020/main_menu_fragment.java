@@ -27,11 +27,7 @@ public class main_menu_fragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         user_profile_name = view.findViewById(R.id.username_view);
         create_new_user = view.findViewById(R.id.create_new_user_button);
-        if (User.getCurrentUser().isAdmin()){
-            create_new_user.setVisibility(View.VISIBLE);
-        } else {
-            create_new_user.setVisibility(View.GONE);
-        }
+
         set_user_profilename();
         ImageView profile_image = view.findViewById(R.id.userprofile_pic);
 
