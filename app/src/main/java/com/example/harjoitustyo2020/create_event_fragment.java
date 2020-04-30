@@ -81,9 +81,7 @@ public class create_event_fragment extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                //asd
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
 
         final DatePickerDialog.OnDateSetListener date_datepicker = new DatePickerDialog.OnDateSetListener() {
@@ -105,36 +103,24 @@ public class create_event_fragment extends Fragment {
 
         set_duration.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updating_all();
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {updating_all();}
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updating_all();
-            }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {updating_all();}
 
             @Override
-            public void afterTextChanged(Editable editable) {
-                updating_all();
-            }
+            public void afterTextChanged(Editable editable) {updating_all();}
         });
 
         set_start_time.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updating_all();
-            }
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {updating_all();}
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                updating_all();
-            }
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {updating_all();}
 
             @Override
-            public void afterTextChanged(Editable editable) {
-                updating_all();
-            }
+            public void afterTextChanged(Editable editable) {updating_all();}
         });
 
         new_event_button.setOnClickListener(new View.OnClickListener() {
@@ -157,7 +143,6 @@ public class create_event_fragment extends Fragment {
         show_selected_date();
         set_whole_event();
         checkIf_reservation_possible(sporthall_spinner.getSelectedItemPosition());
-        //updateSporthallSpinner();
     }
 
 
@@ -168,7 +153,6 @@ public class create_event_fragment extends Fragment {
         if (ReservationManager.isTimeSlotReserved(chosen_sport_hall, show_start_calendar, show_end_calendar)) {
             is_timeslot_free_text.setText("Time is available!");
             is_timeslot_free_text.setTextColor(Color.parseColor("#45f542")); // GREEN
-            //Log.d("CREATE", "Reservation possible");
         }else if (chosen_sport_hall.getDisabled()){
             is_timeslot_free_text.setText("Hall is not available");
             is_timeslot_free_text.setTextColor(Color.parseColor("#f54242")); // RED
@@ -176,7 +160,6 @@ public class create_event_fragment extends Fragment {
         else {
             is_timeslot_free_text.setText("Time is taken!");
             is_timeslot_free_text.setTextColor(Color.parseColor("#f54242")); // RED
-            //Log.d("CREATE", "Reservation NOT possible");
         }
     }
 
@@ -206,7 +189,6 @@ public class create_event_fragment extends Fragment {
                 System.out.println("START TIME:   "+ show_start_calendar.after(Calendar.getInstance()));
                 if (show_start_calendar.after(Calendar.getInstance())) { // Checks if the desired start date is after the current date
                     if (ReservationManager.isTimeSlotReserved(chosen_sport_hall, show_start_calendar, show_end_calendar)) { // Calls method for final check if timeslot is free
-                        // TODO Add system to and reoccuring events ReservationManager.addNewWeeklyReservation()
                         String sportName = set_sportname.getText().toString();
                         int duration = Integer.parseInt(set_duration.getText().toString());
                         int maxPart = Integer.parseInt(set_max_participants_field.getText().toString());
@@ -268,12 +250,12 @@ public class create_event_fragment extends Fragment {
         return null;
     }
 
-
+    //show user selected date to user
     private void show_selected_date() {
         selected_date.setText("Selected date: "+ DMY_format.format(show_start_calendar.getTime()));
     }
 
-
+    //show date and time to user
     private void set_whole_event() {
         show_end_calendar = (Calendar) show_start_calendar.clone();
         String innerText = set_duration.getText().toString();
