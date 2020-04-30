@@ -18,14 +18,8 @@ public class Sporthall {
         reservationsList = new ArrayList<>();
     }
 
-
-
-
-    // ======= PUBLIC GETTERS =======
-
     public int getUUID() {return UUID;}
     public String getName() {return name;}
-    //public int getMaximumCapacity() {return maximumCapacity;}
     public String getType() {return type;}
     public boolean getDisabled() {return disabled;}
     public String getUniversityName() {return universityName;}
@@ -34,20 +28,13 @@ public class Sporthall {
 
 
 
-
-
-    // ======= PUBLIC SETTERS =======
     public void setUUID(int ID) {UUID = ID;}
     public void setName(String nam) {name = nam;}
-   //public void setMaximumCapacity(int capacity) {maximumCapacity = capacity;}
     public void setType(String newType) {type = newType;}
     public void setDisabled(boolean isDisabled) {disabled = isDisabled;}
     public void setUniversityName(String UNIname) {universityName = UNIname;}
     public void setReservationsList(ArrayList<Reservation> resevations) {reservationsList = resevations;}
 
-
-
-    // ======= PUBLIC OTHER METHODS =======
 
     public void updateReservationsFromSQL() {
         reservationsList = SqlManager.getReservationsFromDatabase(this);
@@ -74,9 +61,6 @@ public class Sporthall {
     public String toString() {
         return (UUID + " " + name + " " + type + " " + universityName + " " + disabled);
     }
-
-
-    // ======= PRIVATE METHODS =======
 
     private boolean doesReservationExist(Reservation reservation) {
         for (Reservation reserv : reservationsList) {
