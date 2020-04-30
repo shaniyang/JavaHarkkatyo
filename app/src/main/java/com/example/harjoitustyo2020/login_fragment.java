@@ -36,21 +36,15 @@ public class login_fragment extends Fragment {
     }
 
     private void login_clicked() {
-
-        //((MainActivity)getActivity()).authenticate();
-        //TODO REMOVE WHEN READY^^
         String user_name = user_name_field.getText().toString();
         String password = password_field.getText().toString();
         String hashedPassword = password_manager.get_hashed_password(password, user_name);
         try{
         User login_user = is_credintials_correct(user_name, hashedPassword);
-
-        Log.d("LOGIN", "---------------");
-
         if (login_user != null) {
             Log.d("LOGIN", "Login accepted");
             User.setCurrentUser(login_user);
-
+            //go to authenticate view
             ((MainActivity)getActivity()).authenticate();
 
         } else {
@@ -63,7 +57,7 @@ public class login_fragment extends Fragment {
         }
     }
 
-
+    //check if username and password match
     private User is_credintials_correct(String userName, String passwordHash) {
 
         Log.d("LOGIN", "Hash 1: " + passwordHash);
