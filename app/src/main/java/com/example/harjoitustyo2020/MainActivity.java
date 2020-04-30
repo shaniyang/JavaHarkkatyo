@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
             new SqlManager(this); // This must be after the existance of the file is checked
             SqlManager.presetDatabaseValues();
         }
-        object_initalization_test();
         login();
     }
     @Override
@@ -75,82 +74,76 @@ public class MainActivity extends AppCompatActivity {
         Log.d("FILE", path);
         return file.exists();
     }
-
-    public void object_initalization_test() { // TODO DELETE ONCE TEST OVER
-        reservation_manager = new ReservationManager();
-        reservation_manager.logAllUsers("OBJECT");
-        reservation_manager.logAllSporthalls("OBJECT");
-        reservation_manager.logAllReservations("OBJECT");
-    }
-
-
+    //launch login fragment
     public void login() {
         login_fragment login = new login_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, login);
         fragmentTransaction.commit();
     }
-
+    //launch authentication fragment
     public void authenticate() {
         authentication_fragment authentication = new authentication_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, authentication);
         fragmentTransaction.commit();
     }
-
+    //launch main menu fragment
     public void main_menu() {
         main_menu_fragment main_menu = new main_menu_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, main_menu);
         fragmentTransaction.commit();
     }
-
+    //launch user profile fragment
     public void user_profile(View v) {
         user_profile_fragment user_profile = new user_profile_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, user_profile);
         fragmentTransaction.commit();
     }
-
+    //launch create new event fragment
     public void create_event(View v) {
         create_event_fragment create_event_fragment = new create_event_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, create_event_fragment);
         fragmentTransaction.commit();
     }
-
+    //launch edit event fragment
     public void edit_event(View v) {
         edit_event_fragment edit_event_fragment = new edit_event_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, edit_event_fragment);
         fragmentTransaction.commit();
     }
-
+    //launch enroll fragment
     public void enroll(View V) {
         enroll_fragment enroll_fragment = new enroll_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, enroll_fragment);
         fragmentTransaction.commit();
     }
-
+    //launch view events fragment
     public void view_events(View V) {
         view_own_events_fragment view_own_events_fragment = new view_own_events_fragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, view_own_events_fragment);
         fragmentTransaction.commit();
     }
+    //launch create new user fragment
     public void create_user(View v) {
+        if (User.getCurrentUser().isAdmin()){
         add_users add_users = new add_users();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragment_container, add_users);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();}
     }
 
     public void to_menu(View v) {
         popStacks();
         main_menu();
     }
-
+    //export reservations to CSV file
     public void exportCSV() {
         reservations_list = (ArrayList) get_reservations();
         FileOutputStream fos;
@@ -174,19 +167,20 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-        public List<String> get_reservations(){ //Gets events from database and puts them to list for spinner
-        java.util.List<java.lang.String> reservations = new ArrayList<>();
-        SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd kk:mm");
-        int user_uuid;
-        user_uuid = User.getCurrentUser().getUUID();
-        for (Sporthall sporthall : ReservationManager.sporthallsList) {
-            sporthall.updateReservationsFromSQL();
-            for (Reservation reservation : sporthall.getReservations()) {
-                if (reservation.getOwner().getUUID() == user_uuid) {
-                    reservations.add(reservation.getUUID() +": "+reservation.getSporthall().getName() + ": " + format.format(reservation.getStartDate().getTime()) + ": " + reservation.getSport()+": "+reservation.getMaxParticipants());
-                }
+    // get reservations from database as a list
+    public List<String> get_reservations(){ //Gets events from database and puts them to list for spinner
+    java.util.List<java.lang.String> reservations = new ArrayList<>();
+    SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd kk:mm");
+    int user_uuid;
+    user_uuid = User.getCurrentUser().getUUID();
+    for (Sporthall sporthall : ReservationManager.sporthallsList) {
+        sporthall.updateReservationsFromSQL();
+        for (Reservation reservation : sporthall.getReservations()) {
+            if (reservation.getOwner().getUUID() == user_uuid) {
+                reservations.add(reservation.getUUID() +": "+reservation.getSporthall().getName() + ": " + format.format(reservation.getStartDate().getTime()) + ": " + reservation.getSport()+": "+reservation.getMaxParticipants());
             }
         }
-        return reservations;
     }
+    return reservations;
+}
 }

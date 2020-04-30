@@ -59,7 +59,7 @@ public class user_profile_fragment extends Fragment {
         String phone = "'" + phone_number_field.getText().toString() + "'";
         String email = "'" + email_field.getText().toString() + "'";
         System.out.println(name.length());
-        if (name.length() > 0 ){
+        if (name.length() > 0 ){ // if field contains data, it is saved to database
             SqlManager.SQLuser.updateRow(Integer.toString(User.getCurrentUser().getUUID()), SqlTablenames.userTable.COLUMN_NAME_FIRSTNAME, name);
             toast("Updated!");
         }
@@ -71,7 +71,7 @@ public class user_profile_fragment extends Fragment {
             SqlManager.SQLuser.updateRow(Integer.toString(User.getCurrentUser().getUUID()), SqlTablenames.userTable.COLUMN_NAME_EMAIL, email);
             toast("Updated!");
         }
-        if (phone.length() == 0 && email.length() == 0){toast("Input data please.");}
+        if (phone.length() == 0 && email.length() == 0 && name.length() == 0){toast("Input data please.");}
     }
 
 }

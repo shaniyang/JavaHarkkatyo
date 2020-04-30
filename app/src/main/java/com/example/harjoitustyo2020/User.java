@@ -14,18 +14,12 @@ public class User {
     private boolean admin;
     private String uniName;// Is the user admin (True = yes, False = no)
 
-    // LIST OF USERS IS IN RESERVATION MANAGER!
 
-    User() {
-        // Empty
-    }
+    User() {}
 
 
     public static User getCurrentUser() {return currentlyLoggedin;}
     public static void setCurrentUser(User newUser) {currentlyLoggedin = newUser;}
-
-
-    // ======= PUBLIC GETTERS =======
 
     public int getUUID() {return UUID;}
     public String getUserName() {return userName;}
@@ -37,9 +31,6 @@ public class User {
     public boolean isAdmin() {return admin;}
     public String getUniName() {return uniName;}
 
-
-    // ======= PUBLIC SETTERS =======
-
     public void setUUID(int newUUID) {UUID = newUUID;}
     public void setUserName(String newName) {userName = newName;}
     public void setFirstName(String newName) {firstName = newName;}
@@ -50,8 +41,6 @@ public class User {
     public void setAdminPrivilege(boolean isAdmin) {admin = isAdmin;}
     public void setUniName(String newUniName) {uniName = newUniName;}
 
-
-    // ======= PUBLIC OTHER METHODS =======
 
     // USED ONLY FOR DEBUGGIN PURPOSES
     public String toString() {

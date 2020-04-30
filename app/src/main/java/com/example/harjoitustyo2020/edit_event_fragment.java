@@ -116,7 +116,7 @@ public class edit_event_fragment extends Fragment {
         event_spinner.setAdapter(adapter);
     }
 
-
+    //get reservations and return them as a list
     public List<String> get_reservations(){ //Gets events from database and puts them to list for spinner
         List<String> reservations = new ArrayList<>();
         SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd kk:mm");
@@ -133,7 +133,7 @@ public class edit_event_fragment extends Fragment {
         return reservations;
     }
 
-
+    //return corresponding id for reservations
     public List<String> get_reservations_id(){ //Gets events from database and puts ID's to list. saveChanges method uses on ID's to alter values
         List<String> reservations = new ArrayList<>();
         int user_uuid;

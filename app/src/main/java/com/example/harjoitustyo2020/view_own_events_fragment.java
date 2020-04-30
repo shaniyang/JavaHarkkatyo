@@ -36,7 +36,7 @@ public class view_own_events_fragment extends Fragment {
     }
 
 
-
+    // get all reservations and return as a list
     public List<Reservation> get_all_reservations() {
         all_reservation_list = new ArrayList<>();
 
@@ -48,7 +48,7 @@ public class view_own_events_fragment extends Fragment {
         return all_reservation_list;
     }
 
-
+    // get user's enroll and return them as a list
     public List<String> get_user_enrolls() {
         List<String> UsersEnrolls = new ArrayList<>();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd' 'kk:mm");
@@ -67,7 +67,7 @@ public class view_own_events_fragment extends Fragment {
         }
         return UsersEnrolls;
     }
-
+    // prints user's enroll's to scrollable text view
     public void print_all_user_enrolls() {
         scrollable_field.setText("");
         for (int i = 0; i< get_user_enrolls().size(); i++) {

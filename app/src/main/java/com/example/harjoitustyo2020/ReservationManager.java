@@ -13,16 +13,12 @@ public class ReservationManager {
     public static List<Sporthall> sporthallsList;
 
     ReservationManager() {
-        //TÄÄLLÄ ON USEREIDEN JA SPORTHALLIEN HAKU DATABASESTA!
         usersList = new ArrayList<>();
         usersList = SqlManager.getUsersFromDatabase();
         sporthallsList = new ArrayList<>();
         sporthallsList = SqlManager.getSporthallsFromDatabase();
         System.out.println("first user :   "+usersList.get(0));
     }
-
-
-    // ======= PUBLIC OTHER METHODS =======
 
     public static void addNewReservation(User owner, Sporthall sporthall, String sport, Calendar startDate, int duration, int maxParticipants, int recurringEvent) {
         // What reservation requires:
@@ -102,9 +98,6 @@ public class ReservationManager {
         }
     }
 
-
-    // ======= PUBLIC BOOLEAN METHODS =======
-
     public static boolean isTimeSlotReserved(Sporthall sporthall, Calendar startDate, Calendar endDate) {
 
         // Gets all the existing reservations for the specified sporthall
@@ -140,9 +133,6 @@ public class ReservationManager {
         return true; // if all the weeks are gone through without falses, then it is possible
         // to reserve the given timeslot
     }
-
-
-    // ======= PRIVATE OTHER METHODS =======
 
     // Checks if both dates are not null, and if the startDate is before or equal to endDate
     private static boolean isDateFaulty(Calendar startDate, Calendar endDate) {

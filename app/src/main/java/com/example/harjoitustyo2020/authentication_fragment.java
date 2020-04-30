@@ -40,7 +40,7 @@ public class authentication_fragment extends Fragment {
         });
     }
 
-
+    //authenticate button click
     private void button_clicked() {
 
         if (check_authentication(auth_code_field.getText().toString())) {
@@ -52,7 +52,7 @@ public class authentication_fragment extends Fragment {
         }
     }
 
-
+    //set random authentication code to text box for user
     private void set_authentication_code() {
         Random rnd = new Random();
         String authText = "";
@@ -64,11 +64,8 @@ public class authentication_fragment extends Fragment {
         authentication_code.setText("Your authentication code is "+ auth_code);
     }
 
-
+    // check if authentication code was correctly typed
     private boolean check_authentication(String input) {
-        /*if (input.length() == 0) {
-            return true; //TODO REMOVE ONCE ALL IS GOOD
-        }*/
         return input.equals(auth_code);
     }
 }

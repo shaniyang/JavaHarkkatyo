@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class enroll_fragment extends Fragment {
-    private TextView sportevent_info_text;
     private EditText edit_date;
     private Spinner sportevents_spinner;
     private Button join_button;
@@ -40,7 +39,6 @@ public class enroll_fragment extends Fragment {
     @SuppressLint("SimpleDateFormat")
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        //sporteventInfoText = view.findViewById(R.id.tSporteventInfo_join);
         search_button = view.findViewById(R.id.search_button);
         edit_date = view.findViewById(R.id.set_date_field);
         sportevents_spinner = view.findViewById(R.id.event_spinner);
@@ -59,16 +57,11 @@ public class enroll_fragment extends Fragment {
         sportevents_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                //updateInfoBox(i);
-            }
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {}
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-                //Yeet
-            }
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
-        //porteventInfoText.setText("Yehaw!");
         search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +124,7 @@ public class enroll_fragment extends Fragment {
         return reservations;
     }
 
-
+    // go through list and show only corresponding events
     private void update_sportevent_spinner() {
 
         List<String> reservationStrings = new ArrayList<>();
@@ -156,40 +149,5 @@ public class enroll_fragment extends Fragment {
                 getView().getContext(),R.layout.support_simple_spinner_dropdown_item,reservationStrings);
         sportevents_spinner.setAdapter(adapter);
     }
-
-/*
-    private void updateInfoBox(int i) {
-        Reservation reservation = getReservationFromPosition(i);
-        reservation.getAttenderList(reservation);
-        if (reservation != null) {
-            String text = "";
-            text += "Sport type: " + reservation.getSport() + "\n";
-            text += "Sporthall name: " + reservation.getSporthall().getName() + "\n";
-            text += "Owner: " + reservation.getOwner().getFirstName() + " " + reservation.getOwner().getSurName() + "\n";
-            text += "Start time: " + format.format(reservation.getStartDate().getTime()) + "\n";
-            text += "End time: " + format.format(reservation.getEndDate().getTime()) + "\n";
-            text += "Attenders: " + reservation.getAttenderAmount() + "\n";
-            text += "Max attenders: " + reservation.getMaxParticipants() + "\n";
-
-            sporteventInfoText.setText(text);
-        }
-    }
-
-
-    private Reservation getReservationFromPosition(int i) {
-        int j = 0;
-        for (Sporthall sporthall : ReservationManager.sporthallsList) {
-            if (!sporthall.getDisabled()) {
-                for (Reservation reservation : sporthall.getReservations()) {
-                    if (j == i) {
-                        return reservation;
-                    } else {
-                        j++;
-                    }
-                }
-            }
-        }
-        return null;
-    }*/
 }
 
